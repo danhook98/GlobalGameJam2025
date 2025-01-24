@@ -1,23 +1,23 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _halfPlayerSizeX;
-    private Camera _camera;
+    public float _halfPlayerSizeX;
 
-    [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. Use this variable to allow movement.
+    [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. 
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private CameraUtil cameraUtilScript;
     
     private Vector2 _movement = Vector2.zero;
     private Rigidbody2D _rigidbody;
     
     private void Awake()
     {
-        _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
-        _halfPlayerSizeX= GetComponent<SpriteRenderer>().bounds.size.x;
+        _halfPlayerSizeX= GetComponent<SpriteRenderer>().bounds.size.x/2;
     }
 
     private void OnEnable()
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        ClampPlayerMovement();
+        cameraUtilScript.ClampPlayerMovement();
     }
 
     private void FixedUpdate()
@@ -44,22 +44,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Obstacle"))
         {
+            //Call Event PlayerDeath()
             //Play Animation, wait for it to end
             //Delete bubble
         }
-    }
-
-    private void ClampPlayerMovement()
-    {
-        Vector3 position = transform.position;
-        
-        float distance = transform.position.z - _camera.transform.position.z;
-        
-        float leftBorder = _camera.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + _halfPlayerSizeX;
-        float rightBorder = _camera.ViewportToWorldPoint(new Vector3(1, 0, distance)).x - _halfPlayerSizeX;
-        
-        position.x = Mathf.Clamp(position.x, leftBorder, rightBorder);
-        transform.position = position;
     }
 
     private void OnMove(Vector2 input)
