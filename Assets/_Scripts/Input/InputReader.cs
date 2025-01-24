@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 [CreateAssetMenu(fileName = "InputReader", menuName = "BubbleGame/InputReader")]
 public class InputReader : ScriptableObject, GameInput.IGameplayActions
 {
-    public UnityAction<Vector2> OnMoveEvent;
+    public event UnityAction<Vector2> OnMoveEvent;
     
     private GameInput _gameInput;
 
