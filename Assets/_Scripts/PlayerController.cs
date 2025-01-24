@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
             //Call Event PlayerDeath()
             //Play Animation, wait for it to end
             //Delete bubble
+            Destroy(gameObject);
         }
     }
 
