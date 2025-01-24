@@ -31,10 +31,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
     public void DisableAllInput() => _gameInput.Gameplay.Disable();
 
     public void OnMove(InputAction.CallbackContext context)
-    {
-        if (context.action.phase == InputActionPhase.Performed)
-            OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
+    { 
+        OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
 }
-
-//Subscribe and unsubscribe OnMove() method,
