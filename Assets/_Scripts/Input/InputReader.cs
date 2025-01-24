@@ -36,3 +36,5 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions
             OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
 }
+
+//Subscribe and unsubscribe OnMove() method,
