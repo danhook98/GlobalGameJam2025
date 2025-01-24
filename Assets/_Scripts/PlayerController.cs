@@ -7,13 +7,12 @@ public class PlayerController : MonoBehaviour
     private float _halfPlayerSizeX;
     private Camera _camera;
 
-    private const float MaxSpeed = 5f; // Can use smoothDamp for smoother movement.
-    [SerializeField] private InputReader InputReader;
+    [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. Use this variable to allow movement.
+    [SerializeField] private InputReader inputReader;
     
     private Vector2 _movement = Vector2.zero;
     private Rigidbody2D _rigidbody;
     
-
     private void Awake()
     {
         _camera = Camera.main;
@@ -23,17 +22,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        InputReader.OnMoveEvent += OnMove;
+        inputReader.OnMoveEvent += OnMove;
     }
 
     private void OnDisable()
     {
-        InputReader.OnMoveEvent -= OnMove;
+        inputReader.OnMoveEvent -= OnMove;
     }
 
     private void Update()
     {
         ClampPlayerMovement();
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidbody.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
