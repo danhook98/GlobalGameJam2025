@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _obstacles;
+    [SerializeField] private GameObject[] obstacles;
+    [SerializeField] private GameObject[] buffs;
+    [SerializeField] private GameObject[] debuffs;
 
     private void Update()
     {
@@ -18,9 +20,9 @@ public class ObjectSpawner : MonoBehaviour
         
         for (int i = 0; i < randomSpawnNumber; i++)
         {
-            int randomIndex = Random.Range(0, _obstacles.Length); // Which object from the array spawns
+            int randomIndex = Random.Range(0, obstacles.Length); // Which object from the array spawns
             Vector3 randomSpawnPosition = new Vector3(Random.Range(-2, 3), 5, Random.Range(-2, 3));
-            Instantiate(_obstacles[randomIndex], randomSpawnPosition, Quaternion.identity);
+            Instantiate(obstacles[randomIndex], randomSpawnPosition, obstacles[randomIndex].transform.rotation);
         }
     }
 }
