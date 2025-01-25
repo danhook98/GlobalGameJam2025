@@ -1,4 +1,4 @@
-public enum Buffs
+public enum BuffTypes
 {
     Shield, 
     Boost,

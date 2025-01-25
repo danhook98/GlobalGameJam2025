@@ -1,4 +1,4 @@
-public enum Debuffs
+public enum DebuffTypes
 {
     Poison, 
     BigBubble,

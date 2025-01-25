@@ -14,7 +14,6 @@ public class ObjectSpawner : MonoBehaviour
     
     public void SpawnObstacle()
     {
-        
         int randomSpawnNumber = Random.Range(1, 4); // How many obstacles should spawn
         
         for (int i = 0; i < randomSpawnNumber; i++)
