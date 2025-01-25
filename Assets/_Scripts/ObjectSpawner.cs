@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] _obstacles;
+    [SerializeField] private GameObject[] _obstacles;
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl)) 
         {
