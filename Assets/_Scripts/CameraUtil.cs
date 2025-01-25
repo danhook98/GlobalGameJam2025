@@ -14,4 +14,10 @@ public class CameraUtil : MonoBehaviour
 
         return position; 
     }
+
+    public static float GetScreenBottomY(Camera camera)
+    {
+        float position = camera.ViewportToWorldPoint(new Vector2(0, 0)).y;
+        return position;
+    }
 }
