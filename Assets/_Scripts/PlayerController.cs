@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. 
+    [Header("References")]
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private GameEventChannelSO gameEventChannel;
+    
+    [Header("Movement")]
+    [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. 
     
     private Vector2 _movement = Vector2.zero;
     private Rigidbody2D _rigidbody2d;
@@ -31,7 +35,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody2d.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
         {
@@ -39,6 +43,8 @@ public class PlayerController : MonoBehaviour
             //Play Animation, wait for it to end
             // TODO: look at object pooling if we have time.
             Destroy(gameObject);
+            
+            gameEventChannel.PlayerHasDied();
         }
     }
 
