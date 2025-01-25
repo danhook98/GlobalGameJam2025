@@ -40,22 +40,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-<<<<<<< Updated upstream
         if (!collision.CompareTag("Obstacle")) return;
         
         //Play Animation, wait for it to end
         // TODO: look at object pooling if we have time.
         gameEventChannel.PlayerHasDied();
         Destroy(gameObject);
-=======
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            //Play Animation, wait for it to end
-            // TODO: look at object pooling if we have time.
-            gameEventChannel.PlayerHasDied();
-            Destroy(gameObject);
-        }
->>>>>>> Stashed changes
     }
 
     private void OnMove(Vector2 input)
