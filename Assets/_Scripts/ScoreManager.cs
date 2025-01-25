@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private int scorePerSecond = 2;
+    [SerializeField] private PlayerScoreSO playerScore;
     
     private int _score;
     private float _scoreDelay;
@@ -23,7 +24,7 @@ public class ScoreManager : MonoBehaviour
         if (_nextScoreTime > Time.time) return;
         
         _score++; 
-        Debug.Log("Score: " + _score);
+        playerScore.score = _score; // Update the player score data.
         _nextScoreTime = Time.time + _scoreDelay;
     }
 }
