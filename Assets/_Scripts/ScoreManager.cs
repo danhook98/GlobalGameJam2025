@@ -6,11 +6,22 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private int scorePerSecond = 2;
     [SerializeField] private PlayerScoreSO playerScore;
+    [SerializeField] private GameEventChannelSO gameEventChannel;
     
     private int _score;
     private int _multiplier; 
     private float _scoreDelay;
-    private float _nextScoreTime; 
+    private float _nextScoreTime;
+
+    private void OnEnable()
+    {
+        gameEventChannel.OnChangeScoreMultiplier += SetScoreMultiplier;
+    }
+
+    private void OnDisable()
+    {
+        gameEventChannel.OnChangeScoreMultiplier -= SetScoreMultiplier;
+    }
 
     private void Awake()
     {
@@ -34,11 +45,13 @@ public class ScoreManager : MonoBehaviour
     {
         _multiplier = multiplier;
         StartCoroutine(ResetScoreMultiplier(time));
+        Debug.Log(_multiplier);
     }
 
     private IEnumerator ResetScoreMultiplier(float time)
     {
         yield return new WaitForSeconds(time);
         _multiplier = 1;
+        Debug.Log("Reset score multiplier: " + _multiplier);
     }
 }
