@@ -529,6 +529,8 @@ MonoBehaviour:
   gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
   objectSpawner: {fileID: 1405635624}
   scoreManager: {fileID: 1405635623}
+  spawnIntervalMin: 0.65
+  spawnIntervalMax: 2
 --- !u!4 &1405635622
 Transform:
   m_ObjectHideFlags: 0

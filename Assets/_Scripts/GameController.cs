@@ -1,14 +1,22 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameEventChannelSO gameEventChannel;
     [SerializeField] private ObjectSpawner objectSpawner;
     [SerializeField] private ScoreManager scoreManager;
 
+    [Header("Spawn Variables")] 
+    [SerializeField] private float spawnIntervalMin = 0.5f;
+    [SerializeField] private float spawnIntervalMax = 2f;
+    
     private bool _gameLost = false;
+    
+    private float _nextSpawnTime;
 
     private void OnEnable()
     {
@@ -30,10 +38,27 @@ public class GameController : MonoBehaviour
         gameEventChannel.OnDebuffCollected -= OnDebuffCollected;
     }
 
+    private void Start()
+    {
+        _nextSpawnTime = Time.time + GetRandomSpawnTime();
+    }
+
     // Main game loop. 
     private void Update()
     {
-        if (_gameLost) return; 
+        if (_gameLost) return;
+
+        // Spawn the next wave. 
+        if (_nextSpawnTime < Time.time)
+        {
+            objectSpawner.SpawnObstacle();
+            _nextSpawnTime = Time.time + GetRandomSpawnTime();
+        }
+    }
+
+    private float GetRandomSpawnTime()
+    {
+        return Random.Range(spawnIntervalMin, spawnIntervalMax);
     }
 
     #region Player Events
