@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameEventChannelSO gameEventChannel;
     
     [Header("Movement")]
-    [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. 
+    [SerializeField] private float moveSpeed = 15f; // Can use smoothDamp for smoother movement. 
     
     private Vector2 _movement = Vector2.zero;
     private Rigidbody2D _rigidbody2d;
@@ -32,19 +32,19 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody2d.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
+        // _rigidbody2d.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
+        Vector2 movement = Time.fixedDeltaTime * moveSpeed * _movement;
+        _rigidbody2d.MovePosition(_rigidbody2d.position + movement);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
         {
-            //Call Event PlayerDeath()
             //Play Animation, wait for it to end
             // TODO: look at object pooling if we have time.
-            Destroy(gameObject);
-            
             gameEventChannel.PlayerHasDied();
+            Destroy(gameObject);
         }
     }
 
