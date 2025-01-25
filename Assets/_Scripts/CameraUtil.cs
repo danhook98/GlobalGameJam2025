@@ -20,4 +20,16 @@ public class CameraUtil : MonoBehaviour
         float position = camera.ViewportToWorldPoint(new Vector2(0, 0)).y;
         return position;
     }
+
+    public static float GetScreenLeftX(Camera camera)
+    {
+        float position = camera.ViewportToWorldPoint(new Vector2(0, 0)).x;
+        return position;
+    }
+
+    public static float GetScreenRightX(Camera camera)
+    {
+        float position = camera.ViewportToWorldPoint(new Vector2(1, 0)).x;
+        return position;
+    }
 }
