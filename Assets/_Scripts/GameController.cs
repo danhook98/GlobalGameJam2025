@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private GameEventChannelSO gameEventChannel;
+    [SerializeField] private ObjectSpawner objectSpawner;
     [SerializeField] private ScoreManager scoreManager;
 
     private bool _gameLost = false;
