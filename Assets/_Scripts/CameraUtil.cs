@@ -3,14 +3,12 @@ using UnityEngine.InputSystem;
 
 public class CameraUtil : MonoBehaviour
 {
-    public static Vector3 ClampPlayerMovement(Transform playerTransform, Camera camera)
+    public static Vector2 ClampPlayerMovement(Transform playerTransform, Camera camera)
     {
-        Vector3 position = playerTransform.position;
-        
-        float distance = position.z - camera.transform.position.z;
+        Vector2 position = playerTransform.position;
 
-        float leftBorder = camera.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + 0.45f; 
-        float rightBorder = camera.ViewportToWorldPoint(new Vector3(1, 0, distance)).x - 0.45f;
+        float leftBorder = camera.ViewportToWorldPoint(new Vector2(0, 0)).x + 0.45f; 
+        float rightBorder = camera.ViewportToWorldPoint(new Vector2(1, 0)).x - 0.45f;
         
         position.x = Mathf.Clamp(position.x, leftBorder, rightBorder);
 
