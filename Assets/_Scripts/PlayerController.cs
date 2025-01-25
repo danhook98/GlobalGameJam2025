@@ -1,7 +1,4 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,11 +6,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader inputReader;
     
     private Vector2 _movement = Vector2.zero;
-    private Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody2d;
+    private Transform _transform;
+    private Camera _camera;
     
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+        _transform = GetComponent<Transform>();
+        _camera = Camera.main;
     }
 
     private void OnEnable() => inputReader.OnMoveEvent += OnMove;
@@ -22,12 +23,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // TODO: replace with a larger time interval for checking. 
-        transform.position = CameraUtil.ClampPlayerMovement(transform);
+        _transform.position = CameraUtil.ClampPlayerMovement(_transform, _camera);
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
+        _rigidbody2d.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
