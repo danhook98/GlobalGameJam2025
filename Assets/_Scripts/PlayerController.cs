@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float _halfPlayerSizeX;
-
     [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. 
     [SerializeField] private InputReader inputReader;
     [SerializeField] private CameraUtil cameraUtilScript;
@@ -17,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _halfPlayerSizeX= GetComponent<SpriteRenderer>().bounds.size.x/2;
     }
 
     private void OnEnable()
@@ -46,7 +43,6 @@ public class PlayerController : MonoBehaviour
         {
             //Call Event PlayerDeath()
             //Play Animation, wait for it to end
-            //Delete bubble
             Destroy(gameObject);
         }
     }
