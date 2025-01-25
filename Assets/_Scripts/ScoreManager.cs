@@ -8,12 +8,14 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private PlayerScoreSO playerScore;
     
     private int _score;
+    private int _multiplier; 
     private float _scoreDelay;
     private float _nextScoreTime; 
 
     private void Awake()
     {
         _scoreDelay = 1f / scorePerSecond;
+        _multiplier = 1;
         _nextScoreTime = Time.time + _scoreDelay;
     }
 
@@ -23,8 +25,20 @@ public class ScoreManager : MonoBehaviour
     {
         if (_nextScoreTime > Time.time) return;
         
-        _score++; 
+        _score += _score * _multiplier; 
         playerScore.score = _score; // Update the player score data.
         _nextScoreTime = Time.time + _scoreDelay;
+    }
+
+    private void SetScoreMultiplier(int multiplier, float time)
+    {
+        _multiplier = multiplier;
+        StartCoroutine(ResetScoreMultiplier(time));
+    }
+
+    private IEnumerator ResetScoreMultiplier(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _multiplier = 1;
     }
 }
