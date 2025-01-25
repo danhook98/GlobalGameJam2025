@@ -448,6 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405635622}
   - component: {fileID: 1405635621}
+  - component: {fileID: 1405635623}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -468,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
+  scoreManager: {fileID: 1405635623}
 --- !u!4 &1405635622
 Transform:
   m_ObjectHideFlags: 0
@@ -483,6 +485,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405635623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405635620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97abfda925bb35d48b5617c876f1bbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerSecond: 2
+  playerScore: {fileID: 11400000, guid: 8da940770a7f88a4b9389713490519b3, type: 2}
 --- !u!1001 &3580301102355799652
 PrefabInstance:
   m_ObjectHideFlags: 0
