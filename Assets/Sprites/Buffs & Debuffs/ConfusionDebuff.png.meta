@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ConfusionDebuff_0: -7179988688881878974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
