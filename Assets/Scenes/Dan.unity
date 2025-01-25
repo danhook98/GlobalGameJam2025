@@ -401,6 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePerSecond: 2
   playerScore: {fileID: 11400000, guid: 8da940770a7f88a4b9389713490519b3, type: 2}
+  gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
 --- !u!4 &688952119
 Transform:
   m_ObjectHideFlags: 0
@@ -531,6 +532,7 @@ MonoBehaviour:
   scoreManager: {fileID: 1405635623}
   spawnIntervalMin: 0.65
   spawnIntervalMax: 2
+  shouldSpawn: 0
 --- !u!4 &1405635622
 Transform:
   m_ObjectHideFlags: 0
@@ -560,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePerSecond: 2
   playerScore: {fileID: 11400000, guid: 8da940770a7f88a4b9389713490519b3, type: 2}
+  gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
 --- !u!114 &1405635624
 MonoBehaviour:
   m_ObjectHideFlags: 0

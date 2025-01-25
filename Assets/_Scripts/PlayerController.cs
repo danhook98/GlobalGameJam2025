@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Transform _transform;
     private Camera _camera;
     
-    private Vector2 _movement = Vector2.zero;
+    private Vector2 _movement;
     private Vector2 _velocity;
     
     private void Awake()
