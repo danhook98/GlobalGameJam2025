@@ -51,7 +51,7 @@ MonoBehaviour:
   scoreManager: {fileID: 1988994618514948243}
   spawnIntervalMin: 0.65
   spawnIntervalMax: 2
-  shouldSpawn: 0
+  shouldSpawn: 1
 --- !u!114 &1988994618514948243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,3 +91,5 @@ MonoBehaviour:
   - {fileID: 8119621329991608648, guid: 017af7e788efa0344a1c0e57fc2f9187, type: 3}
   - {fileID: 8119621329991608648, guid: 4b2f2585559b79e49ac3a26eea1442de, type: 3}
   - {fileID: 8119621329991608648, guid: 8a3dde419e4e92f449562f66d3a6156b, type: 3}
+  buffDebuffSpawnChance: 0.1
+  buffOverDebuffChance: 0.6

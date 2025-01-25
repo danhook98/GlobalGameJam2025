@@ -8,6 +8,9 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private GameObject[] buffs;
     [SerializeField] private GameObject[] debuffs;
 
+    [SerializeField] private float buffDebuffSpawnChance = 0.1f;
+    [SerializeField] private float buffOverDebuffChance = 0.6f;
+
     private Camera _camera; 
     
     private float _xLeftMax; 
@@ -39,14 +42,31 @@ public class ObjectSpawner : MonoBehaviour
     public void SpawnObstacle()
     {
         int randomSpawnNumber = Random.Range(1, 4); // How many obstacles should spawn
-        
+
         for (int i = 0; i < randomSpawnNumber; i++)
         {
-            int randomIndex = Random.Range(0, obstacles.Length); // Which object from the array spawns
+            GameObject obstacle;
+            
+            bool shouldSpawnBuffDebuff = Random.value < buffDebuffSpawnChance;
+
+            if (shouldSpawnBuffDebuff)
+            {
+                obstacle = Random.value < buffOverDebuffChance ? GetRandomObstacle(buffs) : GetRandomObstacle(debuffs);
+            }
+            else
+            {
+                obstacle = obstacles[Random.Range(0, obstacles.Length)];
+            }
             
             Vector3 randomSpawnPosition = new Vector3(Random.Range(-2, 3), 5, Random.Range(-2, 3));
             
-            Instantiate(obstacles[randomIndex], randomSpawnPosition, obstacles[randomIndex].transform.rotation);
+            Instantiate(obstacle, randomSpawnPosition, obstacle.transform.rotation);
         }
+    }
+
+    private GameObject GetRandomObstacle(GameObject[] obstacles)
+    {
+        int randomIndex = Random.Range(0, obstacles.Length);
+        return obstacles[randomIndex];
     }
 }

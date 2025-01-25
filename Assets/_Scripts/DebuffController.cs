@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DebuffController : MonoBehaviour
+public class DebuffController : ObstacleEntity
 {
     [SerializeField] private GameEventChannelSO gameEventChannel;
     [SerializeField] private DebuffTypes debuffType;
