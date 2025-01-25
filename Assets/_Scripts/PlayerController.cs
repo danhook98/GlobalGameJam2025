@@ -40,8 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.CompareTag("Obstacle")) return;
-        
+         if (!collision.gameObject.CompareTag("Obstacle")) return;
+         
         //Play Animation, wait for it to end
         // TODO: look at object pooling if we have time.
         gameEventChannel.PlayerHasDied();
