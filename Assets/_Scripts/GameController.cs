@@ -11,12 +11,22 @@ public class GameController : MonoBehaviour
 
     private void OnEnable()
     {
+        // Player events.
         gameEventChannel.OnPlayerDeath += OnPlayerDeath;
+        
+        // Buff/debuff events.
+        gameEventChannel.OnBuffCollected += OnBuffCollected;
+        gameEventChannel.OnDebuffCollected += OnDebuffCollected;
     }
 
     private void OnDisable()
     {
+        // Player events.
         gameEventChannel.OnPlayerDeath -= OnPlayerDeath;
+        
+        // Buff/debuff events.
+        gameEventChannel.OnBuffCollected -= OnBuffCollected;
+        gameEventChannel.OnDebuffCollected -= OnDebuffCollected;
     }
 
     // Main game loop. 
@@ -25,6 +35,7 @@ public class GameController : MonoBehaviour
         if (_gameLost) return; 
     }
 
+    #region Player Events
     private void OnPlayerDeath()
     {
         Debug.Log("Player Death");
@@ -32,4 +43,18 @@ public class GameController : MonoBehaviour
         // TODO: Stop obstacle spawning.
         // TODO: Display game over canvas. 
     }
+    #endregion
+    
+    #region Buff/Debuff events
+
+    private void OnBuffCollected(BuffTypes buffType)
+    {
+        Debug.Log("Buff Collected: " + buffType);
+    }
+
+    private void OnDebuffCollected(DebuffTypes buffType)
+    {
+        Debug.Log("Debuff Collected: " + buffType);
+    }
+    #endregion
 }
