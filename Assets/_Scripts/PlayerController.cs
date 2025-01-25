@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 100f; // Can use smoothDamp for smoother movement. 
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private CameraUtil cameraUtilScript;
     
     private Vector2 _movement = Vector2.zero;
     private Rigidbody2D _rigidbody;
@@ -17,19 +16,13 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
-    {
-        inputReader.OnMoveEvent += OnMove;
-    }
-
-    private void OnDisable()
-    {
-        inputReader.OnMoveEvent -= OnMove;
-    }
+    private void OnEnable() => inputReader.OnMoveEvent += OnMove;
+    private void OnDisable() => inputReader.OnMoveEvent -= OnMove; 
 
     private void Update()
     {
-        cameraUtilScript.ClampPlayerMovement();
+        // TODO: replace with a larger time interval for checking. 
+        transform.position = CameraUtil.ClampPlayerMovement(transform);
     }
 
     private void FixedUpdate()
@@ -43,6 +36,7 @@ public class PlayerController : MonoBehaviour
         {
             //Call Event PlayerDeath()
             //Play Animation, wait for it to end
+            // TODO: look at object pooling if we have time.
             Destroy(gameObject);
         }
     }
