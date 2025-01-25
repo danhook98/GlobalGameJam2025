@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class BuffController : MonoBehaviour
+public class BuffController : ObstacleEntity
 {
     [SerializeField] private GameEventChannelSO gameEventChannel;
     [SerializeField] private BuffTypes buffType;
