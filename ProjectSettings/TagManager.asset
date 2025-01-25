@@ -7,11 +7,12 @@ TagManager:
   - Obstacle
   - Buff
   - Debuff
+  - NearMissObstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NearMissCheck
   - Water
   - UI
   - 

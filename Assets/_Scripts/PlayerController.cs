@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody2d.MovePosition(_rigidbody2d.position + movement);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
          if (!collision.gameObject.CompareTag("Obstacle")) return;
          
@@ -51,13 +51,5 @@ public class PlayerController : MonoBehaviour
     private void OnMove(Vector2 input)
     {
         _movement.x = input.x;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Obstacle"))
-        {
-            Debug.Log("Near Miss!");
-        }
     }
 }
