@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Destroy the game object if the obstacle gets too far off screen. 
+        // Destroy the game object if the obstacle gets too far off-screen. 
         if (_rigidbody2d.position.y < CameraUtil.GetScreenBottomY(_camera) - 3f)
         {
             Destroy(gameObject);
