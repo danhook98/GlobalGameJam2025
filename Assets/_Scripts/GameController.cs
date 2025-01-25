@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private float spawnIntervalMin = 0.5f;
     [SerializeField] private float spawnIntervalMax = 2f;
     
+    [Header("Debug")]
+    [SerializeField] private bool shouldSpawn = false;
+    
     private bool _gameLost = false;
     
     private float _nextSpawnTime;
@@ -51,7 +54,9 @@ public class GameController : MonoBehaviour
         // Spawn the next wave. 
         if (_nextSpawnTime < Time.time)
         {
-            objectSpawner.SpawnObstacle();
+            if (shouldSpawn)
+                objectSpawner.SpawnObstacle();
+            
             _nextSpawnTime = Time.time + GetRandomSpawnTime();
         }
     }
