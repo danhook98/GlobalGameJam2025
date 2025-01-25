@@ -44,6 +44,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 input)
     {
-        _movement = input;
+        _movement.x = input.x;
     }
 }
