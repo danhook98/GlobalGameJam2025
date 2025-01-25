@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 15f; // Can use smoothDamp for smoother movement. 
     
-    private Vector2 _movement = Vector2.zero;
     private Rigidbody2D _rigidbody2d;
     private Transform _transform;
     private Camera _camera;
+    
+    private Vector2 _movement;
+    private Vector2 _velocity;
     
     private void Awake()
     {
@@ -34,8 +36,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // _rigidbody2d.linearVelocity = maxSpeed * Time.fixedDeltaTime * _movement;
-        Vector2 movement = Time.fixedDeltaTime * moveSpeed * _movement;
-        _rigidbody2d.MovePosition(_rigidbody2d.position + movement);
+        // Vector2 movement = Time.fixedDeltaTime * moveSpeed * _movement;
+        // _rigidbody2d.MovePosition(_rigidbody2d.position + movement);
+        Vector2 targetVelocity = moveSpeed * _movement;
+        _rigidbody2d.linearVelocity = Vector2.SmoothDamp(_rigidbody2d.linearVelocity, targetVelocity, ref _velocity, 0.1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

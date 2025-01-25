@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5720024404427731975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4382633528890145032}
+  - component: {fileID: 3263853738439903948}
+  - component: {fileID: 1988994618514948243}
+  - component: {fileID: 3551290424447899612}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4382633528890145032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720024404427731975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3263853738439903948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720024404427731975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071736b1702bbe94fbc3b3951b6dd655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
+  objectSpawner: {fileID: 3551290424447899612}
+  scoreManager: {fileID: 1988994618514948243}
+  spawnIntervalMin: 0.65
+  spawnIntervalMax: 2
+  shouldSpawn: 0
+--- !u!114 &1988994618514948243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720024404427731975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97abfda925bb35d48b5617c876f1bbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerSecond: 2
+  playerScore: {fileID: 11400000, guid: 8da940770a7f88a4b9389713490519b3, type: 2}
+  gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
+--- !u!114 &3551290424447899612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720024404427731975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac47c29093b1048478ea238ad00a5b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 8870323334337726060, guid: adc487f5f71879d4f834c416d25abbe3, type: 3}
+  - {fileID: 8870323334337726060, guid: 6ace6965f65aaed489ae4c548590362f, type: 3}
+  - {fileID: 8870323334337726060, guid: d1f3becc14d416e4a85d811c624ba0be, type: 3}
+  buffs:
+  - {fileID: 8915110115111387949, guid: 135ba818d82103241aacd03b26ef1e7c, type: 3}
+  - {fileID: 8915110115111387949, guid: a1998f0f59368d946ade0d22e588d70d, type: 3}
+  - {fileID: 8915110115111387949, guid: fb4c268fe2d04654ca6416be2407ac81, type: 3}
+  debuffs:
+  - {fileID: 8119621329991608648, guid: 017af7e788efa0344a1c0e57fc2f9187, type: 3}
+  - {fileID: 8119621329991608648, guid: 4b2f2585559b79e49ac3a26eea1442de, type: 3}
+  - {fileID: 8119621329991608648, guid: 8a3dde419e4e92f449562f66d3a6156b, type: 3}
