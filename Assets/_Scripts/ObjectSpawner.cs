@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,7 +17,9 @@ public class ObjectSpawner : MonoBehaviour
     private float _xLeftMax; 
     private float _xRightMax;
 
-    private float _screenWidth; 
+    private float _screenWidth;
+    
+    List<Tuple<GameObject, Vector2>> _obstaclesToSpawn = new List<Tuple<GameObject, Vector2>>();
 
     private void Awake()
     {
@@ -29,6 +32,7 @@ public class ObjectSpawner : MonoBehaviour
         _xRightMax = CameraUtil.GetScreenRightX(_camera);
         
         _screenWidth = _xRightMax - _xLeftMax;
+        Debug.Log(_screenWidth);
     }
 
     private void Update()
@@ -42,6 +46,8 @@ public class ObjectSpawner : MonoBehaviour
     public void SpawnObstacle()
     {
         int randomSpawnNumber = Random.Range(1, 4); // How many obstacles should spawn
+        
+        _obstaclesToSpawn.Clear();
 
         for (int i = 0; i < randomSpawnNumber; i++)
         {
@@ -55,12 +61,27 @@ public class ObjectSpawner : MonoBehaviour
             }
             else
             {
-                obstacle = obstacles[Random.Range(0, obstacles.Length)];
+                obstacle = GetRandomObstacle(obstacles);
             }
             
-            Vector3 randomSpawnPosition = new Vector3(Random.Range(-2, 3), 5, Random.Range(-2, 3));
+            // This creates a value that defines the width of 'columns' in world space. The more obstacles, the more
+            // 'columns' there will be. 
+            float spawnZoneWidth = _screenWidth / randomSpawnNumber;
             
-            Instantiate(obstacle, randomSpawnPosition, obstacle.transform.rotation);
+            // Calculate a position within the current iteration's 'column'. 
+            float position = (i * spawnZoneWidth) + Random.Range(0, spawnZoneWidth);
+            Vector2 spawnPosition = new(position, 5f);
+            
+            _obstaclesToSpawn.Add(new Tuple<GameObject, Vector2>(obstacle, spawnPosition));
+        }
+
+        // TODO: convert to a camera util call. 
+        //Vector2 topLeftX = Camera.main.ViewportToWorldPoint(new Vector2(0, 1));
+        Vector2 topLeftX = new(CameraUtil.GetScreenLeftX(_camera), 5f);
+        
+        foreach ((GameObject obstacle, Vector2 position) in _obstaclesToSpawn)
+        {
+            Instantiate(obstacle, topLeftX + position, obstacle.transform.rotation);
         }
     }
 
