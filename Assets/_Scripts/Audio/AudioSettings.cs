@@ -44,4 +44,24 @@ public class AudioSettings : MonoBehaviour
         SetMusicVolume();
         SetSFXVolume();
     }
+
+    public void IncreaseMusicVolume()
+    {
+        musicSlider.value = musicSlider.value + 10;
+    }
+    
+    public void DecreaseMusicVolume()
+    {
+        musicSlider.value = musicSlider.value - 10;
+    }
+    
+    public void IncreaseSFXVolume()
+    {
+        SFXSlider.value = SFXSlider.value + 10; 
+    }
+    
+    public void DecreaseSFXVolume()
+    {
+        SFXSlider.value = SFXSlider.value - 10;
+    }
 }

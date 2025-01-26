@@ -24,12 +24,21 @@ public class SelectionArrow : MonoBehaviour
             ChangePosition(-1);
         else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             ChangePosition(+1);
-        
-        //IF bubble is in the position of the music slider or sfx slider, change corresponding volumes
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            //Decrease volume by 1
-        if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            //Increase volume by 1
+
+        if (_currentPosition == 0)
+        {
+            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                audioSettingsScript.DecreaseMusicVolume();
+            if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                audioSettingsScript.IncreaseMusicVolume();
+        }
+        if (_currentPosition == 1)
+        {
+            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                audioSettingsScript.DecreaseSFXVolume();
+            if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                audioSettingsScript.IncreaseSFXVolume();
+        }
         
         // Interact with options
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
