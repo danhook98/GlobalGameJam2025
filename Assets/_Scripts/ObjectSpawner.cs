@@ -26,15 +26,21 @@ public class ObjectSpawner : MonoBehaviour
     private float _screenWidth;
 
     private bool _speedBuffActive = false;
+    
+    private bool _obstacleRemovalBuffActive = false;
+    private int _wavesToIgnore = 0;
+    private int _currentIgnoredWaves = 0;
 
     private void OnEnable()
     {
         gameEventChannel.OnBuffBoostTriggered += TriggerSpeedBuff;
+        gameEventChannel.OnBuffObstacleRemovalTriggered += TriggerObstacleRemovalBuff;
     }
 
     private void OnDisable()
     {
         gameEventChannel.OnBuffBoostTriggered -= TriggerSpeedBuff;
+        gameEventChannel.OnBuffObstacleRemovalTriggered -= TriggerObstacleRemovalBuff;
     }
 
     private void Awake()
@@ -63,6 +69,19 @@ public class ObjectSpawner : MonoBehaviour
     
     public void SpawnObstacle()
     {
+        if (_obstacleRemovalBuffActive)
+        {
+            if (_currentIgnoredWaves < _wavesToIgnore)
+            {
+                _currentIgnoredWaves++;
+                return;
+            }
+            else
+            {
+                _obstacleRemovalBuffActive = false;
+            }
+        }
+        
         int randomSpawnNumber = Random.Range(1, 4); // How many obstacles should spawn
         
         _obstaclesToSpawn.Clear();
@@ -136,6 +155,13 @@ public class ObjectSpawner : MonoBehaviour
         SetObstacleSpeeds(10f);
         yield return new WaitForSeconds(time);
         _speedBuffActive = false;
+    }
+
+    private void TriggerObstacleRemovalBuff(int wavesToIgnore)
+    {
+        _wavesToIgnore = wavesToIgnore;
+        _currentIgnoredWaves = 0;
+        _obstacleRemovalBuffActive = true;
     }
     #endregion
 }
