@@ -25,14 +25,14 @@ public class SelectionArrow : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             ChangePosition(+1);
 
-        if (_currentPosition == 0)
+        else if (_currentPosition == 0)
         {
             if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 audioSettingsScript.DecreaseMusicVolume();
             if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 audioSettingsScript.IncreaseMusicVolume();
         }
-        if (_currentPosition == 1)
+        else if (_currentPosition == 1)
         {
             if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 audioSettingsScript.DecreaseSFXVolume();
@@ -41,7 +41,7 @@ public class SelectionArrow : MonoBehaviour
         }
         
         // Interact with options
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             Interact();
     }
 
