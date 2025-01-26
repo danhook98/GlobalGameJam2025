@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 5ef2b5a8fd8dbbc4bab3d2ee6f23ad79, type: 2}
   gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
-  moveSpeed: 10
+  moveSpeed: 7
 --- !u!58 &8480401732648502790
 CircleCollider2D:
   m_ObjectHideFlags: 0
