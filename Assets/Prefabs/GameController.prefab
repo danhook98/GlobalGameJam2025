@@ -51,6 +51,11 @@ MonoBehaviour:
   scoreManager: {fileID: 1988994618514948243}
   spawnIntervalMin: 0.65
   spawnIntervalMax: 2
+  shieldBuffTime: 10
+  boostBuffTime: 5
+  obstacleRemovalBuffWaves: 6
+  poisonDebuffTime: 5
+  bigBubbleDebuffTime: 5
   shouldSpawn: 1
 --- !u!114 &1988994618514948243
 MonoBehaviour:
@@ -79,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac47c29093b1048478ea238ad00a5b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
   obstacles:
   - {fileID: 8870323334337726060, guid: adc487f5f71879d4f834c416d25abbe3, type: 3}
   - {fileID: 8870323334337726060, guid: 6ace6965f65aaed489ae4c548590362f, type: 3}
@@ -90,6 +96,5 @@ MonoBehaviour:
   debuffs:
   - {fileID: 8119621329991608648, guid: 017af7e788efa0344a1c0e57fc2f9187, type: 3}
   - {fileID: 8119621329991608648, guid: 4b2f2585559b79e49ac3a26eea1442de, type: 3}
-  - {fileID: 8119621329991608648, guid: 8a3dde419e4e92f449562f66d3a6156b, type: 3}
   buffDebuffSpawnChance: 0.1
   buffOverDebuffChance: 0.6

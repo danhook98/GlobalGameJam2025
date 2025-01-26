@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private int obstacleRemovalBuffWaves = 6;
     [Space] 
     [SerializeField] private float poisonDebuffTime = 5f;
+    [SerializeField] private float bigBubbleDebuffTime = 5f;
     
     [Header("Debug")]
     [SerializeField] private bool shouldSpawn = false;
@@ -129,6 +130,8 @@ public class GameController : MonoBehaviour
                 StartCoroutine(ResetBuffDebuffState(poisonDebuffTime));
                 break;
             case DebuffTypes.BigBubble:
+                gameEventChannel.TriggerBigBubbleDebuff(bigBubbleDebuffTime);
+                StartCoroutine(ResetBuffDebuffState(bigBubbleDebuffTime));
                 break;
             case DebuffTypes.CrazyObstacles:
                 break;
