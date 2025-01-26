@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,12 +11,17 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 15f; // Can use smoothDamp for smoother movement. 
     
+    // Component references.
     private Rigidbody2D _rigidbody2d;
     private Transform _transform;
     private Camera _camera;
     
+    // Movement variables.
     private Vector2 _movement;
     private Vector2 _velocity;
+    
+    // Buff/debuff variables.
+    private bool _shieldBuffActive = false;
     
     private void Awake()
     {
@@ -24,8 +30,19 @@ public class PlayerController : MonoBehaviour
         _camera = Camera.main;
     }
 
-    private void OnEnable() => inputReader.OnMoveEvent += OnMove;
-    private void OnDisable() => inputReader.OnMoveEvent -= OnMove; 
+    private void OnEnable()
+    {
+        inputReader.OnMoveEvent += OnMove;
+
+        gameEventChannel.OnBuffShieldTriggered += TriggerShieldBuff;
+    } 
+    
+    private void OnDisable()
+    {
+        inputReader.OnMoveEvent -= OnMove;
+        
+        gameEventChannel.OnBuffShieldTriggered -= TriggerShieldBuff;
+    } 
 
     private void Update()
     {
@@ -46,14 +63,41 @@ public class PlayerController : MonoBehaviour
     {
          if (!collision.gameObject.CompareTag("Obstacle")) return;
          
-        //Play Animation, wait for it to end
-        // TODO: look at object pooling if we have time.
-        gameEventChannel.PlayerHasDied();
-        Destroy(gameObject);
+         // The shield buff is active.
+         if (_shieldBuffActive)
+         {
+             _shieldBuffActive = false;
+             return;
+         }
+         
+         //Play Animation, wait for it to end
+         // TODO: look at object pooling if we have time.
+         gameEventChannel.PlayerHasDied();
+         Destroy(gameObject);
     }
 
     private void OnMove(Vector2 input)
     {
         _movement.x = input.x;
     }
+
+    #region Buffs and Debuffs
+    private void TriggerShieldBuff(float time)
+    {
+        Debug.Log("Shield buff triggered");
+        _shieldBuffActive = true;
+        
+        // TODO: add animation change.
+
+        StartCoroutine(ResetShieldBuffState(time));
+    }
+
+    private IEnumerator ResetShieldBuffState(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (_shieldBuffActive)
+            _shieldBuffActive = false; 
+    }
+    #endregion
 }
