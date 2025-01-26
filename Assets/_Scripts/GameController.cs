@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -13,11 +14,17 @@ public class GameController : MonoBehaviour
     [Header("Spawn Variables")] 
     [SerializeField] private float spawnIntervalMin = 0.5f;
     [SerializeField] private float spawnIntervalMax = 2f;
+
+    [Header("Buff/Debuff Variables")] 
+    [SerializeField] private float shieldBuffTime = 10f;
+    [SerializeField] private float boostBuffTime = 5f;
     
     [Header("Debug")]
     [SerializeField] private bool shouldSpawn = false;
     
     private bool _gameLost = false;
+    private bool _buffActive = false;
+    private bool _debuffActive = false;
     
     private float _nextSpawnTime;
 
@@ -77,15 +84,41 @@ public class GameController : MonoBehaviour
     #endregion
     
     #region Buff/Debuff events
-
     private void OnBuffCollected(BuffTypes buffType)
     {
         Debug.Log("Buff Collected: " + buffType);
+
+        if (_buffActive || _debuffActive) return;
+
+        switch (buffType)
+        {
+            case BuffTypes.Shield:
+                gameEventChannel.TriggerShieldBuff(shieldBuffTime);
+                StartCoroutine(ResetBuffDebuffState(shieldBuffTime));
+                break;
+            case BuffTypes.Boost:
+                break;
+            case BuffTypes.ObstacleRemoval:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(buffType), buffType, null);
+        }
+        
+        
     }
 
     private void OnDebuffCollected(DebuffTypes buffType)
     {
         Debug.Log("Debuff Collected: " + buffType);
+        
+        if (_buffActive || _debuffActive) return;
     }
     #endregion
+
+    private IEnumerator ResetBuffDebuffState(float timeUntilReset)
+    {
+        yield return new WaitForSeconds(timeUntilReset);
+        _buffActive = false;
+        _debuffActive = false;
+    }
 }
