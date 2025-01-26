@@ -27,6 +27,15 @@ public class PlayerController : MonoBehaviour
     private bool _shieldBuffActive = false;
     private bool _boostBuffActive = false;
     
+    private bool _poisonDebuffActive = false;
+    private float _oldSpeed;
+    
+    
+    // Animations.
+    private static readonly int Shield = Animator.StringToHash("Shield");
+    private static readonly int NoShield = Animator.StringToHash("NoShield");
+    private static readonly int Pop = Animator.StringToHash("Pop");
+    
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
@@ -43,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
         gameEventChannel.OnBuffShieldTriggered += TriggerShieldBuff;
         gameEventChannel.OnBuffBoostTriggered += TriggerBoostBuff;
+
+        gameEventChannel.OnDebuffPoisonTriggered += TriggerPoisonDebuff;
     } 
     
     private void OnDisable()
@@ -51,6 +62,8 @@ public class PlayerController : MonoBehaviour
         
         gameEventChannel.OnBuffShieldTriggered -= TriggerShieldBuff;
         gameEventChannel.OnBuffBoostTriggered -= TriggerBoostBuff;
+        
+        gameEventChannel.OnDebuffPoisonTriggered -= TriggerPoisonDebuff;
     } 
 
     private void Update()
@@ -76,17 +89,16 @@ public class PlayerController : MonoBehaviour
          if (_shieldBuffActive)
          {
              _shieldBuffActive = false;
-             _anim.SetTrigger("NoShield");
+             _anim.SetTrigger(NoShield);
              return;
          }
 
-
-        //Play Animation, wait for it to end
-        if (_popped != true)
-        {
-            _anim.SetTrigger("Pop");
-            _popped = true;
-        }
+         //Play Animation, wait for it to end
+         if (_popped != true)
+         { 
+             _anim.SetTrigger(Pop); 
+             _popped = true; 
+         }
 
          // TODO: look at object pooling if we have time.
          gameEventChannel.PlayerHasDied();
@@ -103,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Shield buff triggered");
         _shieldBuffActive = true;
-        _anim.SetTrigger("Shield");
+        _anim.SetTrigger(Shield);
         StartCoroutine(ResetShieldBuffState(time));
     }
 
@@ -113,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
         if (_shieldBuffActive)
             _shieldBuffActive = false;
-        _anim.SetTrigger("NoShield");
+        _anim.SetTrigger(NoShield);
     }
 
     private void TriggerBoostBuff(float time)
@@ -133,6 +145,25 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         _circleCollider2D.enabled = true;
         _boostBuffActive = false;
+    }
+    
+    private void TriggerPoisonDebuff(float time)
+    {
+        Debug.Log("Poison buff triggered");
+
+        _poisonDebuffActive = true;
+
+        _oldSpeed = moveSpeed;
+        moveSpeed *= 0.7f;
+        
+        StartCoroutine(ResetPoisonDebuffState(time));
+    }
+
+    private IEnumerator ResetPoisonDebuffState(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _poisonDebuffActive = false;
+        moveSpeed = _oldSpeed;
     }
     #endregion
 }

@@ -14,7 +14,7 @@ public class GameEventChannelSO : ScriptableObject
     public event UnityAction<int> OnBuffObstacleRemovalTriggered;
 
     public event UnityAction<DebuffTypes> OnDebuffCollected;
-    public event UnityAction OnDebuffPoisonTriggered;
+    public event UnityAction<float> OnDebuffPoisonTriggered;
     public event UnityAction OnDebuffBigBubbleTriggered;
     public event UnityAction OnDebuffCrazyObstaclesTriggered;
     
@@ -31,7 +31,7 @@ public class GameEventChannelSO : ScriptableObject
     public void TriggerObstacleRemovalBuff(int waves) => OnBuffObstacleRemovalTriggered?.Invoke(waves);
     
     public void DebuffCollected(DebuffTypes buffType) => OnDebuffCollected?.Invoke(buffType);
-    public void TriggerPoisonDebuff() => OnDebuffPoisonTriggered?.Invoke();
+    public void TriggerPoisonDebuff(float time) => OnDebuffPoisonTriggered?.Invoke(time);
     public void TriggerBigBubbleDebuff() => OnDebuffBigBubbleTriggered?.Invoke();
     public void TriggerCrazyObstacleDebuff() => OnDebuffCrazyObstaclesTriggered?.Invoke();
     
