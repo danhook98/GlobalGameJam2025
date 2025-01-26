@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class SelectionArrow : MonoBehaviour
 {
-    [SerializeField] public RectTransform[] options;
-    public RectTransform _rect;
-    public int _currentPosition;
+    [SerializeField] private RectTransform[] options;
+    [SerializeField] private AudioSettings audioSettingsScript;
+    private RectTransform _rect;
+    private int _currentPosition;
     private int _previousPosition;
 
     private void Awake()
     {
         _rect = GetComponent<RectTransform>();
+        audioSettingsScript = GameObject.FindWithTag("Audio").GetComponent<AudioSettings>();
     }
 
     private void Update()
@@ -22,6 +24,12 @@ public class SelectionArrow : MonoBehaviour
             ChangePosition(-1);
         else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             ChangePosition(+1);
+        
+        //IF bubble is in the position of the music slider or sfx slider, change corresponding volumes
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            //Decrease volume by 1
+        if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            //Increase volume by 1
         
         // Interact with options
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))

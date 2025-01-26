@@ -1341,7 +1341,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 516337442}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
@@ -1402,7 +1402,6 @@ GameObject:
   - component: {fileID: 516337438}
   - component: {fileID: 516337437}
   - component: {fileID: 516337441}
-  - component: {fileID: 516337442}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1512,21 +1511,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   AudioEventChannel: {fileID: 0}
   buttonclickclip: {fileID: 0}
---- !u!114 &516337442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516337436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8394fcbe30fa8442ae0d64fa1059d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMixer: {fileID: 24100000, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
-  musicSlider: {fileID: 384343018}
-  SFXSlider: {fileID: 1602358617}
 --- !u!1 &530589645
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,7 +3013,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 516337442}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 1
@@ -3610,6 +3594,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6421589355157944745, guid: e1f187d8d96b2be4e9fdf0485badde8f, type: 3}
+      propertyPath: SFXSlider
+      value: 
+      objectReference: {fileID: 1602358617}
+    - target: {fileID: 6421589355157944745, guid: e1f187d8d96b2be4e9fdf0485badde8f, type: 3}
+      propertyPath: musicSlider
+      value: 
+      objectReference: {fileID: 384343018}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

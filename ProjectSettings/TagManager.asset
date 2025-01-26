@@ -8,6 +8,7 @@ TagManager:
   - Buff
   - Debuff
   - NearMissObstacle
+  - Audio
   layers:
   - Default
   - TransparentFX
