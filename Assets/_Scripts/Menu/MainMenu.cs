@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] private AudioEventChannelSO AudioEventChannel;
+    [SerializeField] private AudioClipSO buttonclickclip;
     bool pause = false;
     bool mainmenu = true;
 
@@ -14,6 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) && pause == false && mainmenu == false)
         {
+            AudioEventChannel.PlayAudio(buttonclickclip);
             pause = true;
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
@@ -28,16 +31,19 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         mainmenu = false;
+        AudioEventChannel.PlayAudio(buttonclickclip);
         SceneManager.LoadSceneAsync(1);
     }
 
     public void QuitGame()
     {
+        AudioEventChannel.PlayAudio(buttonclickclip);
         Application.Quit();
     }
 
     public void Home()
     {
+        AudioEventChannel.PlayAudio(buttonclickclip);
         pause = false;
         mainmenu = true;
         SceneManager.LoadScene("MainMenu");
@@ -45,7 +51,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void Resume()
-    { 
+    {
+        AudioEventChannel.PlayAudio(buttonclickclip);
         pause = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 0;
