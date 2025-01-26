@@ -1,16 +1,22 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    [SerializeField] private GameEventChannelSO gameEventChannel;
+    
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private GameObject[] buffs;
     [SerializeField] private GameObject[] debuffs;
 
     [SerializeField] private float buffDebuffSpawnChance = 0.1f;
     [SerializeField] private float buffOverDebuffChance = 0.6f;
+    
+    private List<GameObject> _spawnedObstacles;
+    List<Tuple<GameObject, Vector2>> _obstaclesToSpawn;
 
     private Camera _camera; 
     
@@ -18,8 +24,24 @@ public class ObjectSpawner : MonoBehaviour
     private float _xRightMax;
 
     private float _screenWidth;
+
+    private bool _speedBuffActive = false;
     
-    List<Tuple<GameObject, Vector2>> _obstaclesToSpawn = new List<Tuple<GameObject, Vector2>>();
+    private bool _obstacleRemovalBuffActive = false;
+    private int _wavesToIgnore = 0;
+    private int _currentIgnoredWaves = 0;
+
+    private void OnEnable()
+    {
+        gameEventChannel.OnBuffBoostTriggered += TriggerSpeedBuff;
+        gameEventChannel.OnBuffObstacleRemovalTriggered += TriggerObstacleRemovalBuff;
+    }
+
+    private void OnDisable()
+    {
+        gameEventChannel.OnBuffBoostTriggered -= TriggerSpeedBuff;
+        gameEventChannel.OnBuffObstacleRemovalTriggered -= TriggerObstacleRemovalBuff;
+    }
 
     private void Awake()
     {
@@ -32,7 +54,9 @@ public class ObjectSpawner : MonoBehaviour
         _xRightMax = CameraUtil.GetScreenRightX(_camera);
         
         _screenWidth = _xRightMax - _xLeftMax;
-        Debug.Log(_screenWidth);
+        
+        _spawnedObstacles = new List<GameObject>();
+        _obstaclesToSpawn = new List<Tuple<GameObject, Vector2>>();
     }
 
     private void Update()
@@ -45,6 +69,19 @@ public class ObjectSpawner : MonoBehaviour
     
     public void SpawnObstacle()
     {
+        if (_obstacleRemovalBuffActive)
+        {
+            if (_currentIgnoredWaves < _wavesToIgnore)
+            {
+                _currentIgnoredWaves++;
+                return;
+            }
+            else
+            {
+                _obstacleRemovalBuffActive = false;
+            }
+        }
+        
         int randomSpawnNumber = Random.Range(1, 4); // How many obstacles should spawn
         
         _obstaclesToSpawn.Clear();
@@ -81,7 +118,14 @@ public class ObjectSpawner : MonoBehaviour
         
         foreach ((GameObject obstacle, Vector2 position) in _obstaclesToSpawn)
         {
-            Instantiate(obstacle, topLeftX + position, obstacle.transform.rotation);
+            GameObject spawnedObject = Instantiate(obstacle, topLeftX + position, obstacle.transform.rotation);
+
+            if (_speedBuffActive)
+            {
+                spawnedObject.GetComponent<ObstacleEntity>().MoveSpeed = 10f;
+            }
+            
+            _spawnedObstacles.Add(spawnedObject);
         }
     }
 
@@ -90,4 +134,34 @@ public class ObjectSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, obstacles.Length);
         return obstacles[randomIndex];
     }
+
+    private void SetObstacleSpeeds(float speed)
+    {
+        foreach (GameObject obstacle in _spawnedObstacles)
+        {
+            obstacle.GetComponent<ObstacleEntity>().MoveSpeed = speed;
+        }
+    }
+
+    #region Buffs and Debuffs
+    private void TriggerSpeedBuff(float time)
+    {
+        _speedBuffActive = true;
+        StartCoroutine(ManageSpeedBuff(time));
+    }
+
+    private IEnumerator ManageSpeedBuff(float time)
+    {
+        SetObstacleSpeeds(10f);
+        yield return new WaitForSeconds(time);
+        _speedBuffActive = false;
+    }
+
+    private void TriggerObstacleRemovalBuff(int wavesToIgnore)
+    {
+        _wavesToIgnore = wavesToIgnore;
+        _currentIgnoredWaves = 0;
+        _obstacleRemovalBuffActive = true;
+    }
+    #endregion
 }

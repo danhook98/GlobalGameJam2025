@@ -6,6 +6,8 @@ public class ObstacleEntity : MonoBehaviour
     
     private Rigidbody2D _rigidbody2d;
     private Camera _camera;
+    
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     private void Awake()
     {

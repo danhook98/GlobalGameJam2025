@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody2d;
     private Transform _transform;
     private Camera _camera;
+    private CircleCollider2D _circleCollider2D;
     
     // Movement variables.
     private Vector2 _movement;
@@ -24,15 +25,14 @@ public class PlayerController : MonoBehaviour
     
     // Buff/debuff variables.
     private bool _shieldBuffActive = false;
+    private bool _boostBuffActive = false;
     
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _transform = GetComponent<Transform>();
         _camera = Camera.main;
-        _anim = GetComponent<Animator>();
-        _popped = false;
-
+        _circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         inputReader.OnMoveEvent += OnMove;
 
         gameEventChannel.OnBuffShieldTriggered += TriggerShieldBuff;
+        gameEventChannel.OnBuffBoostTriggered += TriggerBoostBuff;
     } 
     
     private void OnDisable()
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         inputReader.OnMoveEvent -= OnMove;
         
         gameEventChannel.OnBuffShieldTriggered -= TriggerShieldBuff;
+        gameEventChannel.OnBuffBoostTriggered -= TriggerBoostBuff;
     } 
 
     private void Update()
@@ -110,6 +112,25 @@ public class PlayerController : MonoBehaviour
         if (_shieldBuffActive)
             _shieldBuffActive = false;
         _anim.SetTrigger("NoShield");
+    }
+
+    private void TriggerBoostBuff(float time)
+    {
+        Debug.Log("Boost buff triggered");
+        
+        _boostBuffActive = true;
+        
+        // TODO: add animation change.
+        _circleCollider2D.enabled = false;
+        
+        StartCoroutine(ResetBoostBuffState(time));
+    }
+
+    private IEnumerator ResetBoostBuffState(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _circleCollider2D.enabled = true;
+        _boostBuffActive = false;
     }
     #endregion
 }
