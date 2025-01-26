@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
         _transform = GetComponent<Transform>();
         _camera = Camera.main;
         _circleCollider2D = GetComponent<CircleCollider2D>();
+        _anim = GetComponent<Animator>();
+        _popped = false;
     }
 
     private void OnEnable()
