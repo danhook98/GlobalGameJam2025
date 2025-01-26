@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &34250403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -389,8 +389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: -101.85}
-  m_SizeDelta: {x: 452.15, y: 405.6992}
+  m_AnchoredPosition: {x: 20.327007, y: 67}
+  m_SizeDelta: {x: 711.0519, y: 405.6992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163371971
 MonoBehaviour:
@@ -412,7 +412,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Asset credits
+  m_text: 'Asset credits
+
+    * Bubble Pop by YehawSnail -- https://freesound.org/s/683587/
+    -- License: Creative Commons 0
+
+    * Videogame Menu BUTTON CLICK by Christopherderp
+    -- https://freesound.org/s/342200/ -- License: Creative Commons 0
+
+    * Synth
+    Head by Unlistenable -- https://freesound.org/s/564985/ -- License: Attribution
+    NonCommercial 4.0
+
+    * Powerup.ogg by jens.enk -- https://freesound.org/s/434609/
+    -- License: Attribution 3.0
+
+    * Hurt_C_08 by cabled_mess -- https://freesound.org/s/350925/
+    -- License: Creative Commons 0
+
+    * Sky Loop by FoolBoyMedia -- https://freesound.org/s/264295/
+    -- License: Attribution NonCommercial 4.0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d2a2502817ea048bb85815b2d79dc9, type: 2}
   m_sharedMaterial: {fileID: -8982867713820504191, guid: 89d2a2502817ea048bb85815b2d79dc9, type: 2}
@@ -439,8 +458,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 32.5
+  m_fontSizeBase: 32.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -451,7 +470,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 7
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -477,7 +496,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1.660904, w: 0}
+  m_margin: {x: 0.00009159562, y: 0, z: -3.8005676, w: -297.41614}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -506,7 +525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &209154950
 RectTransform:
   m_ObjectHideFlags: 0
@@ -698,14 +717,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credits
+  m_text: '-NIKOLAOS COMANDARIU- programmer
 
-    -NIKOLAOS COMANDARIU-  programmer
+    -DANIEL HOOK- lead programmer /
+    mentor
 
-    -DANIEL HOOK-      
-    lead programmer / mentor
-
-    -CONNOR DENNIS-   lead designer'
+    -CONNOR DENNIS- lead designer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d2a2502817ea048bb85815b2d79dc9, type: 2}
   m_sharedMaterial: {fileID: -8982867713820504191, guid: 89d2a2502817ea048bb85815b2d79dc9, type: 2}
@@ -770,7 +787,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1.660904, w: 0}
+  m_margin: {x: -108.08649, y: 0, z: -139.96512, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1656,7 +1673,6 @@ GameObject:
   - component: {fileID: 1128100851}
   - component: {fileID: 1128100850}
   - component: {fileID: 1128100854}
-  - component: {fileID: 1128100853}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1738,103 +1754,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1128100853
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128100849}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b373f885c971d8c44a328e0ce915314e, type: 3}
-  m_Resource: {fileID: 8300000, guid: b373f885c971d8c44a328e0ce915314e, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1128100854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,14 +1825,14 @@ RectTransform:
   m_GameObject: {fileID: 1412378171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 5.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 34250403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 381, y: 393}
+  m_AnchoredPosition: {x: 381, y: 344}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1412378173
@@ -2703,6 +2622,14 @@ PrefabInstance:
       propertyPath: musicSlider
       value: 
       objectReference: {fileID: 384343018}
+    - target: {fileID: 7210110780976180918, guid: e1f187d8d96b2be4e9fdf0485badde8f, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b373f885c971d8c44a328e0ce915314e, type: 3}
+    - target: {fileID: 7210110780976180918, guid: e1f187d8d96b2be4e9fdf0485badde8f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b373f885c971d8c44a328e0ce915314e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2718,15 +2645,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2220362595200411964, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.29399928
       objectReference: {fileID: 0}
     - target: {fileID: 2220362595200411964, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2220362595200411964, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.29399928
       objectReference: {fileID: 0}
     - target: {fileID: 3400636219328565758, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_Pivot.x
@@ -2814,11 +2741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5013612940494241239, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.29399928
       objectReference: {fileID: 0}
     - target: {fileID: 5013612940494241239, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8238326276304801059, guid: 714a2fff7f20a8c4b8b46823ca2f9ab1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2839,15 +2766,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 461320020611592610, guid: 2496c9242d254aa4d863187dee203470, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.65099967
       objectReference: {fileID: 0}
     - target: {fileID: 461320020611592610, guid: 2496c9242d254aa4d863187dee203470, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461320020611592610, guid: 2496c9242d254aa4d863187dee203470, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.65099967
       objectReference: {fileID: 0}
     - target: {fileID: 2482761548959438873, guid: 2496c9242d254aa4d863187dee203470, type: 3}
       propertyPath: m_Pivot.x
@@ -2939,11 +2866,11 @@ PrefabInstance:
       objectReference: {fileID: 807654874}
     - target: {fileID: 8980679592835207694, guid: 2496c9242d254aa4d863187dee203470, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.65099967
       objectReference: {fileID: 0}
     - target: {fileID: 8980679592835207694, guid: 2496c9242d254aa4d863187dee203470, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

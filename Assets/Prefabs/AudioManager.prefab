@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1894206771228952330}
   - component: {fileID: 8854727371728343648}
   - component: {fileID: 6421589355157944745}
-  - component: {fileID: 7210110780976180918}
   - component: {fileID: 5730080320175455740}
+  - component: {fileID: 7210110780976180918}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Audio
@@ -63,7 +63,7 @@ MonoBehaviour:
   myMixer: {fileID: 24100000, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
   musicSlider: {fileID: 0}
   SFXSlider: {fileID: 0}
---- !u!82 &7210110780976180918
+--- !u!82 &5730080320175455740
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,7 +72,7 @@ AudioSource:
   m_GameObject: {fileID: 9220212979071153}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5163866114261364144, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
+  OutputAudioMixerGroup: {fileID: -687080329023092308, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -160,7 +160,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &5730080320175455740
+--- !u!82 &7210110780976180918
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ AudioSource:
   m_GameObject: {fileID: 9220212979071153}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -687080329023092308, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
+  OutputAudioMixerGroup: {fileID: -5163866114261364144, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
