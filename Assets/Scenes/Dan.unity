@@ -584,6 +584,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1649524028571939739, guid: 37a9e79b99cc8a64aa918c15ac09244b, type: 3}
+      propertyPath: gameEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
     - target: {fileID: 6101072592385227834, guid: 37a9e79b99cc8a64aa918c15ac09244b, type: 3}
       propertyPath: m_Name
       value: ScoreCanvas
