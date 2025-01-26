@@ -11,10 +11,14 @@ public class MainMenu : MonoBehaviour
     bool pause = false;
     bool mainmenu = true;
 
-
+    private void Start()
+    {
+        pause = false;
+    }
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && pause == false && mainmenu == false)
+        if (Input.GetKeyDown(KeyCode.Return) && pause == false)
         {
             AudioEventChannel.PlayAudio(buttonclickclip);
             pause = true;

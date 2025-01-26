@@ -1454,6 +1454,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 406672220}
     m_Modifications:
     - target: {fileID: 3488965828198967134, guid: 9bc17073a8b085b48944d02195a44ecf, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea41674f54586e843831ef839a2a0a2a, type: 3}
+    - target: {fileID: 3488965828198967134, guid: 9bc17073a8b085b48944d02195a44ecf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1597,6 +1601,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5438507665777158896, guid: 9bc17073a8b085b48944d02195a44ecf, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f9c71d8e2548b244f95c53c2096cf02e, type: 3}
     - target: {fileID: 5438507665777158896, guid: 9bc17073a8b085b48944d02195a44ecf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
