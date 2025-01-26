@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioEventChannel: {fileID: 11400000, guid: 94d07e72b5fe7454aa645494988a09eb, type: 2}
+  _audioSourceSfx: {fileID: 5730080320175455740}
+  _audioSourceMusic: {fileID: 7210110780976180918}
 --- !u!114 &6421589355157944745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +172,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5163866114261364144, guid: 487e9772a3f023c4a8d73a5c457bf8c4, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b373f885c971d8c44a328e0ce915314e, type: 3}
+  m_Resource: {fileID: 8300000, guid: b373f885c971d8c44a328e0ce915314e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
