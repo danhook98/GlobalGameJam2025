@@ -5,17 +5,18 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioEventChannelSO audioEventChannel;
     
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSourceSfx;
+    [SerializeField] private AudioSource _audioSourceMusic;
 
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
-
-        if (!_audioSource)
-        {
-            _audioSource = gameObject.AddComponent<AudioSource>();
-        }
-    }
+    // private void Awake()
+    // {
+    //     _audioSource = GetComponent<AudioSource>();
+    //
+    //     if (!_audioSource)
+    //     {
+    //         _audioSource = gameObject.AddComponent<AudioSource>();
+    //     }
+    // }
 
     private void OnEnable()
     {
@@ -29,6 +30,6 @@ public class AudioManager : MonoBehaviour
 
     private void PlayAudio(AudioClipSO audioClip)
     {
-        _audioSource.PlayOneShot(audioClip.clip);
+        _audioSourceSfx.PlayOneShot(audioClip.clip);
     }
 }
