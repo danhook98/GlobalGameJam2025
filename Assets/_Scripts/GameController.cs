@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private float shieldBuffTime = 10f;
     [SerializeField] private float boostBuffTime = 5f;
     [SerializeField] private int obstacleRemovalBuffWaves = 6;
+    [Space] 
+    [SerializeField] private float poisonDebuffTime = 5f;
     
     [Header("Debug")]
     [SerializeField] private bool shouldSpawn = false;
@@ -107,17 +109,32 @@ public class GameController : MonoBehaviour
             case BuffTypes.ObstacleRemoval:
                 gameEventChannel.TriggerObstacleRemovalBuff(obstacleRemovalBuffWaves);
                 
+                StartCoroutine(ResetBuffDebuffState(obstacleRemovalBuffWaves));
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(buffType), buffType, null);
         }
     }
 
-    private void OnDebuffCollected(DebuffTypes buffType)
+    private void OnDebuffCollected(DebuffTypes debuffType)
     {
-        Debug.Log("Debuff Collected: " + buffType);
+        Debug.Log("Debuff Collected: " + debuffType);
         
         if (_buffActive || _debuffActive) return;
+
+        switch (debuffType)
+        {
+            case DebuffTypes.Poison:
+                gameEventChannel.TriggerPoisonDebuff(poisonDebuffTime);
+                StartCoroutine(ResetBuffDebuffState(poisonDebuffTime));
+                break;
+            case DebuffTypes.BigBubble:
+                break;
+            case DebuffTypes.CrazyObstacles:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(debuffType), debuffType, null);
+        }
     }
     #endregion
 

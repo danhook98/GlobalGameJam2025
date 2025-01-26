@@ -71,7 +71,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (_obstacleRemovalBuffActive)
         {
-            if (_currentIgnoredWaves < _wavesToIgnore)
+            if (_currentIgnoredWaves < _wavesToIgnore - 1)
             {
                 _currentIgnoredWaves++;
                 return;
@@ -139,6 +139,12 @@ public class ObjectSpawner : MonoBehaviour
     {
         foreach (GameObject obstacle in _spawnedObstacles)
         {
+            if (!obstacle)
+            {
+                _spawnedObstacles.Remove(obstacle);
+                continue;
+            }
+            
             obstacle.GetComponent<ObstacleEntity>().MoveSpeed = speed;
         }
     }
