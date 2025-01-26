@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,7 +17,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private float buffOverDebuffChance = 0.6f;
     
     private List<GameObject> _spawnedObstacles;
-    List<Tuple<GameObject, Vector2>> _obstaclesToSpawn;
+    private List<Tuple<GameObject, Vector2>> _obstaclesToSpawn;
 
     private Camera _camera; 
     
@@ -58,14 +59,6 @@ public class ObjectSpawner : MonoBehaviour
         _spawnedObstacles = new List<GameObject>();
         _obstaclesToSpawn = new List<Tuple<GameObject, Vector2>>();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftControl)) 
-        {
-            SpawnObstacle();
-        }
-    }
     
     public void SpawnObstacle()
     {
@@ -82,8 +75,10 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
         
-        int randomSpawnNumber = Random.Range(1, 4); // How many obstacles should spawn
+        // How many obstacles to spawn. 
+        int randomSpawnNumber = Random.Range(1, 4);
         
+        // Clear the obstacles to spawn list in preparation for the next set to spawn.
         _obstaclesToSpawn.Clear();
 
         for (int i = 0; i < randomSpawnNumber; i++)
@@ -111,11 +106,11 @@ public class ObjectSpawner : MonoBehaviour
             
             _obstaclesToSpawn.Add(new Tuple<GameObject, Vector2>(obstacle, spawnPosition));
         }
-
-        // TODO: convert to a camera util call. 
-        //Vector2 topLeftX = Camera.main.ViewportToWorldPoint(new Vector2(0, 1));
+        
+        // Get the top left corner of the screen, then we can add the 'columns' to it.
         Vector2 topLeftX = new(CameraUtil.GetScreenLeftX(_camera), 5f);
         
+        // Spawn the obstacles/buffs/debuffs.
         foreach ((GameObject obstacle, Vector2 position) in _obstaclesToSpawn)
         {
             GameObject spawnedObject = Instantiate(obstacle, topLeftX + position, obstacle.transform.rotation);
@@ -137,7 +132,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void SetObstacleSpeeds(float speed)
     {
-        foreach (GameObject obstacle in _spawnedObstacles)
+        foreach (GameObject obstacle in _spawnedObstacles.ToList())
         {
             if (!obstacle)
             {
