@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private InputReader inputReader;
     [SerializeField] private GameEventChannelSO gameEventChannel;
+    private Animator _anim;
+    private bool _popped;
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 15f; // Can use smoothDamp for smoother movement. 
@@ -28,6 +30,9 @@ public class PlayerController : MonoBehaviour
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _transform = GetComponent<Transform>();
         _camera = Camera.main;
+        _anim = GetComponent<Animator>();
+        _popped = false;
+
     }
 
     private void OnEnable()
@@ -67,13 +72,21 @@ public class PlayerController : MonoBehaviour
          if (_shieldBuffActive)
          {
              _shieldBuffActive = false;
+             _anim.SetTrigger("NoShield");
              return;
          }
-         
-         //Play Animation, wait for it to end
+
+
+        //Play Animation, wait for it to end
+        if (_popped != true)
+        {
+            _anim.SetTrigger("Pop");
+            _popped = true;
+        }
+
          // TODO: look at object pooling if we have time.
          gameEventChannel.PlayerHasDied();
-         Destroy(gameObject);
+         Destroy(gameObject, 1f);
     }
 
     private void OnMove(Vector2 input)
@@ -86,9 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Shield buff triggered");
         _shieldBuffActive = true;
-        
-        // TODO: add animation change.
-
+        _anim.SetTrigger("Shield");
         StartCoroutine(ResetShieldBuffState(time));
     }
 
@@ -97,7 +108,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         if (_shieldBuffActive)
-            _shieldBuffActive = false; 
+            _shieldBuffActive = false;
+        _anim.SetTrigger("NoShield");
     }
     #endregion
 }
