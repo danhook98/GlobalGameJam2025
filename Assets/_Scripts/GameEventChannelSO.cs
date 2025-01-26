@@ -15,7 +15,7 @@ public class GameEventChannelSO : ScriptableObject
 
     public event UnityAction<DebuffTypes> OnDebuffCollected;
     public event UnityAction<float> OnDebuffPoisonTriggered;
-    public event UnityAction OnDebuffBigBubbleTriggered;
+    public event UnityAction<float> OnDebuffBigBubbleTriggered;
     public event UnityAction OnDebuffCrazyObstaclesTriggered;
     
     // Score events.
@@ -32,7 +32,7 @@ public class GameEventChannelSO : ScriptableObject
     
     public void DebuffCollected(DebuffTypes buffType) => OnDebuffCollected?.Invoke(buffType);
     public void TriggerPoisonDebuff(float time) => OnDebuffPoisonTriggered?.Invoke(time);
-    public void TriggerBigBubbleDebuff() => OnDebuffBigBubbleTriggered?.Invoke();
+    public void TriggerBigBubbleDebuff(float time) => OnDebuffBigBubbleTriggered?.Invoke(time);
     public void TriggerCrazyObstacleDebuff() => OnDebuffCrazyObstaclesTriggered?.Invoke();
     
     

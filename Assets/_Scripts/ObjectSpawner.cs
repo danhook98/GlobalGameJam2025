@@ -147,7 +147,7 @@ public class ObjectSpawner : MonoBehaviour
             
             obstacle.GetComponent<ObstacleEntity>().MoveSpeed = speed;
         }
-    }
+    }   
 
     #region Buffs and Debuffs
     private void TriggerSpeedBuff(float time)

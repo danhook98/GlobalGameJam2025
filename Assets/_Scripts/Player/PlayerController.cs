@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     private bool _poisonDebuffActive = false;
     private float _oldSpeed;
     
+    private bool _bigBubbleDebuffActive = false;
+    private Vector3 _oldScale;
+    private float _oldColliderRadius;
+    private float _bigBubbleScale = 1.5f;
     
     // Animations.
     private static readonly int Shield = Animator.StringToHash("Shield");
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour
         gameEventChannel.OnBuffBoostTriggered += TriggerBoostBuff;
 
         gameEventChannel.OnDebuffPoisonTriggered += TriggerPoisonDebuff;
+        gameEventChannel.OnDebuffBigBubbleTriggered += TriggerBigBubbleDebuff;
     } 
     
     private void OnDisable()
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
         gameEventChannel.OnBuffBoostTriggered -= TriggerBoostBuff;
         
         gameEventChannel.OnDebuffPoisonTriggered -= TriggerPoisonDebuff;
+        gameEventChannel.OnDebuffBigBubbleTriggered -= TriggerBigBubbleDebuff;
     } 
 
     private void Update()
@@ -164,6 +170,29 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         _poisonDebuffActive = false;
         moveSpeed = _oldSpeed;
+    }
+
+    private void TriggerBigBubbleDebuff(float time)
+    {
+        Debug.Log("Big Bubble buff triggered");
+        
+        _bigBubbleDebuffActive = true;
+
+        _oldScale = _transform.localScale;
+        _oldColliderRadius = _circleCollider2D.radius;
+        
+        _transform.localScale *= _bigBubbleScale;
+        _circleCollider2D.radius *= _bigBubbleScale;
+        
+        StartCoroutine(ResetBigBubbleDebuffState(time));
+    }
+
+    private IEnumerator ResetBigBubbleDebuffState(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _bigBubbleDebuffActive = false;
+        _transform.localScale = _oldScale;
+        _circleCollider2D.radius = _oldColliderRadius;
     }
     #endregion
 }
