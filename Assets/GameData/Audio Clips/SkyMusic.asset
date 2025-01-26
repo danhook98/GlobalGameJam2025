@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: SkyMusic
   m_EditorClassIdentifier: Assembly-CSharp::AudioClipSO
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: bcb16f2d9198f064e8507cf52133fea8, type: 3}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: SpaceMusic
   m_EditorClassIdentifier: Assembly-CSharp::AudioClipSO
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 1420ba8dd87645549bd310e510cc4278, type: 3}
