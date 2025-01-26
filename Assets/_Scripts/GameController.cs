@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     [Header("Buff/Debuff Variables")] 
     [SerializeField] private float shieldBuffTime = 10f;
     [SerializeField] private float boostBuffTime = 5f;
+    [SerializeField] private int obstacleRemovalBuffWaves = 6;
     
     [Header("Debug")]
     [SerializeField] private bool shouldSpawn = false;
@@ -104,6 +105,8 @@ public class GameController : MonoBehaviour
                 StartCoroutine(ResetBuffDebuffState(boostBuffTime));
                 break;
             case BuffTypes.ObstacleRemoval:
+                gameEventChannel.TriggerObstacleRemovalBuff(obstacleRemovalBuffWaves);
+                
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(buffType), buffType, null);

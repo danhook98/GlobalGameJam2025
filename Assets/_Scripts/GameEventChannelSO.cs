@@ -11,7 +11,7 @@ public class GameEventChannelSO : ScriptableObject
     public event UnityAction<BuffTypes> OnBuffCollected;
     public event UnityAction<float> OnBuffShieldTriggered;
     public event UnityAction<float> OnBuffBoostTriggered;
-    public event UnityAction OnBuffObstacleRemovalTriggered;
+    public event UnityAction<int> OnBuffObstacleRemovalTriggered;
 
     public event UnityAction<DebuffTypes> OnDebuffCollected;
     public event UnityAction OnDebuffPoisonTriggered;
@@ -28,7 +28,7 @@ public class GameEventChannelSO : ScriptableObject
     public void BuffCollected(BuffTypes buffTypeType) => OnBuffCollected?.Invoke(buffTypeType);
     public void TriggerShieldBuff(float time) => OnBuffShieldTriggered?.Invoke(time);
     public void TriggerBoostBuff(float time) => OnBuffBoostTriggered?.Invoke(time);
-    public void TriggerObstacleRemovalBuff() => OnBuffObstacleRemovalTriggered?.Invoke();
+    public void TriggerObstacleRemovalBuff(int waves) => OnBuffObstacleRemovalTriggered?.Invoke(waves);
     
     public void DebuffCollected(DebuffTypes buffType) => OnDebuffCollected?.Invoke(buffType);
     public void TriggerPoisonDebuff() => OnDebuffPoisonTriggered?.Invoke();
