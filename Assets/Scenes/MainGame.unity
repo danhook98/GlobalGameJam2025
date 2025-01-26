@@ -224,11 +224,11 @@ Transform:
   m_GameObject: {fileID: 238264697}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 181, y: 351, z: 0}
-  m_LocalScale: {x: 46.883995, y: 46.883995, z: 46.884}
+  m_LocalPosition: {x: 105.40206, y: 178.44125, z: 0}
+  m_LocalScale: {x: 139.20197, y: 139.20197, z: 139.20198}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 406672220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &238264699
 SpriteRenderer:
@@ -271,8 +271,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1694261245
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4811301190039258760, guid: e6a3c48e64cc35d429176ea7b9249656, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -354,8 +354,8 @@ Canvas:
   m_GameObject: {fileID: 406672216}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 691723465}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -365,7 +365,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1694261245
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &406672220
@@ -380,6 +380,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 238264698}
   - {fileID: 1692547344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -811,6 +812,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 405488474109028648, guid: 166750eaaea2ff74294813ce22c0a66e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 405488474109028648, guid: 166750eaaea2ff74294813ce22c0a66e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -772135815
+      objectReference: {fileID: 0}
     - target: {fileID: 6647574934684074773, guid: 166750eaaea2ff74294813ce22c0a66e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1609,7 +1618,6 @@ SceneRoots:
   - {fileID: 691723466}
   - {fileID: 1789580528}
   - {fileID: 488550167}
-  - {fileID: 238264698}
   - {fileID: 406672220}
   - {fileID: 818698916}
   - {fileID: 1653021}
