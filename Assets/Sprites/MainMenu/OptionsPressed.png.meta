@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cdff85d964a2efe48a234f5f1bb1b426
+guid: 774062b388535c340b72e2008d2f78b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1637316136370520340
-    second: MenuButtons12_0
+      213: 3674495436346436753
+    second: MenuButtons6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MenuButtons12_0
+      name: MenuButtons6_0
       rect:
         serializedVersion: 2
         x: 3
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4114165e95ae8b610800000000000000
-      internalID: 1637316136370520340
+      spriteID: 19c293c812e6ef230800000000000000
+      internalID: 3674495436346436753
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MenuButtons12_0: 1637316136370520340
+      MenuButtons6_0: 3674495436346436753
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
