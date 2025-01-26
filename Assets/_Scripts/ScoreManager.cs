@@ -36,8 +36,9 @@ public class ScoreManager : MonoBehaviour
     {
         if (_nextScoreTime > Time.time) return;
         
-        _score += _score * _multiplier; 
+        _score += 1 * _multiplier; 
         playerScore.score = _score; // Update the player score data.
+        Debug.Log("Score: " + _score);
         _nextScoreTime = Time.time + _scoreDelay;
     }
 
