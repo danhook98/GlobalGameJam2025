@@ -10,7 +10,7 @@ public class GameEventChannelSO : ScriptableObject
     // Buffs and debuff events
     public event UnityAction<BuffTypes> OnBuffCollected;
     public event UnityAction<float> OnBuffShieldTriggered;
-    public event UnityAction OnBuffBoostTriggered;
+    public event UnityAction<float> OnBuffBoostTriggered;
     public event UnityAction OnBuffObstacleRemovalTriggered;
 
     public event UnityAction<DebuffTypes> OnDebuffCollected;
@@ -27,7 +27,7 @@ public class GameEventChannelSO : ScriptableObject
     // Buff/debuff event triggers.
     public void BuffCollected(BuffTypes buffTypeType) => OnBuffCollected?.Invoke(buffTypeType);
     public void TriggerShieldBuff(float time) => OnBuffShieldTriggered?.Invoke(time);
-    public void TriggerBoostBuff() => OnBuffBoostTriggered?.Invoke();
+    public void TriggerBoostBuff(float time) => OnBuffBoostTriggered?.Invoke(time);
     public void TriggerObstacleRemovalBuff() => OnBuffObstacleRemovalTriggered?.Invoke();
     
     public void DebuffCollected(DebuffTypes buffType) => OnDebuffCollected?.Invoke(buffType);

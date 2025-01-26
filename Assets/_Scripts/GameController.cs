@@ -94,17 +94,20 @@ public class GameController : MonoBehaviour
         {
             case BuffTypes.Shield:
                 gameEventChannel.TriggerShieldBuff(shieldBuffTime);
+                
                 StartCoroutine(ResetBuffDebuffState(shieldBuffTime));
                 break;
             case BuffTypes.Boost:
+                gameEventChannel.TriggerBoostBuff(boostBuffTime);
+                gameEventChannel.ChangeScoreMultiplier(2, boostBuffTime);
+                
+                StartCoroutine(ResetBuffDebuffState(boostBuffTime));
                 break;
             case BuffTypes.ObstacleRemoval:
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(buffType), buffType, null);
         }
-        
-        
     }
 
     private void OnDebuffCollected(DebuffTypes buffType)
