@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameEventChannelSO gameEventChannel;
+    [SerializeField] private AudioEventChannelSO audioEventChannel;
     [SerializeField] private ObjectSpawner objectSpawner;
     [SerializeField] private ScoreManager scoreManager;
 
@@ -22,6 +23,10 @@ public class GameController : MonoBehaviour
     [Space] 
     [SerializeField] private float poisonDebuffTime = 5f;
     [SerializeField] private float bigBubbleDebuffTime = 5f;
+    
+    [Header("Sounds")]
+    [SerializeField] private AudioClipSO buffAudioClip;
+    [SerializeField] private AudioClipSO debuffAudioClip;
     
     [Header("Debug")]
     [SerializeField] private bool shouldSpawn = false;
@@ -93,6 +98,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Buff Collected: " + buffType);
 
         if (_buffActive || _debuffActive) return;
+        
+        audioEventChannel.PlayAudio(buffAudioClip);
 
         switch (buffType)
         {
@@ -122,6 +129,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Debuff Collected: " + debuffType);
         
         if (_buffActive || _debuffActive) return;
+        
+        audioEventChannel.PlayAudio(debuffAudioClip);
 
         switch (debuffType)
         {

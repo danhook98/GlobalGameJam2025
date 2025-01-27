@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
+  audioEventChannel: {fileID: 11400000, guid: 94d07e72b5fe7454aa645494988a09eb, type: 2}
   objectSpawner: {fileID: 3551290424447899612}
   scoreManager: {fileID: 1988994618514948243}
   spawnIntervalMin: 0.65
@@ -56,6 +57,8 @@ MonoBehaviour:
   obstacleRemovalBuffWaves: 6
   poisonDebuffTime: 5
   bigBubbleDebuffTime: 5
+  buffAudioClip: {fileID: 11400000, guid: 3f7c9f2ca43640e478e067e7bc025cbd, type: 2}
+  debuffAudioClip: {fileID: 11400000, guid: 06659830443b40f499972590f606f405, type: 2}
   shouldSpawn: 1
 --- !u!114 &1988994618514948243
 MonoBehaviour:
