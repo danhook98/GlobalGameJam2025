@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
          if (!collision.gameObject.CompareTag("Obstacle")) return;
+         if (_popped) return;
          
          // The shield buff is active.
          if (_shieldBuffActive)
