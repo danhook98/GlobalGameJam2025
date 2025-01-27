@@ -2,12 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
-    [SerializeField] private AudioEventChannelSO AudioEventChannel;
-    [SerializeField] private AudioClipSO buttonclickclip;
+    [FormerlySerializedAs("AudioEventChannel")] [SerializeField] private AudioEventChannelSO audioEventChannel;
+    [FormerlySerializedAs("buttonclickclip")] [SerializeField] private AudioClipSO buttonClickAudioClip;
     bool pause = false;
     bool mainmenu = true;
 
@@ -20,7 +21,7 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) && pause == false)
         {
-            AudioEventChannel.PlayAudio(buttonclickclip);
+            audioEventChannel.PlayAudio(buttonClickAudioClip);
             pause = true;
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
@@ -35,19 +36,16 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         mainmenu = false;
-        AudioEventChannel.PlayAudio(buttonclickclip);
         SceneManager.LoadSceneAsync(1);
     }
 
     public void QuitGame()
     {
-        AudioEventChannel.PlayAudio(buttonclickclip);
         Application.Quit();
     }
 
     public void Home()
     {
-        AudioEventChannel.PlayAudio(buttonclickclip);
         pause = false;
         mainmenu = true;
         SceneManager.LoadScene("MainMenu");
@@ -56,9 +54,13 @@ public class MainMenu : MonoBehaviour
 
     public void Resume()
     {
-        AudioEventChannel.PlayAudio(buttonclickclip);
         pause = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 0;
+    }
+
+    public void PlayClickSound()
+    {
+        audioEventChannel.PlayAudio(buttonClickAudioClip);
     }
 }
