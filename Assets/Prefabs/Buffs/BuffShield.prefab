@@ -133,7 +133,7 @@ MonoBehaviour:
   gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
   buffType: 0
   AudioEventChannel: {fileID: 11400000, guid: 94d07e72b5fe7454aa645494988a09eb, type: 2}
-  buffcollectionclip: {fileID: 11400000, guid: 335e2fbacedbaf9449d2d4294ec008b9, type: 2}
+  buffcollectionclip: {fileID: 11400000, guid: 3f7c9f2ca43640e478e067e7bc025cbd, type: 2}
 --- !u!58 &7928986055819217215
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -106,8 +106,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -772135815
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0274e9228e26a4d40ba51a655cbc7cd2, type: 3}
   m_Color: {r: 0.7122642, g: 0.944915, b: 1, a: 1}
@@ -134,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 5ef2b5a8fd8dbbc4bab3d2ee6f23ad79, type: 2}
   gameEventChannel: {fileID: 11400000, guid: c6e969e4621542e42a54bd3e05141af3, type: 2}
+  audioEventChannel: {fileID: 11400000, guid: 94d07e72b5fe7454aa645494988a09eb, type: 2}
+  popAudioClip: {fileID: 11400000, guid: f7bb987aa5637e941b78fa5a71c0eb0e, type: 2}
   moveSpeed: 7
 --- !u!58 &8480401732648502790
 CircleCollider2D:

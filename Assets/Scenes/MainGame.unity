@@ -856,6 +856,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -772135815
       objectReference: {fileID: 0}
+    - target: {fileID: 821972064985220893, guid: 166750eaaea2ff74294813ce22c0a66e, type: 3}
+      propertyPath: popAudioClip
+      value: 
+      objectReference: {fileID: 11400000, guid: f7bb987aa5637e941b78fa5a71c0eb0e, type: 2}
+    - target: {fileID: 821972064985220893, guid: 166750eaaea2ff74294813ce22c0a66e, type: 3}
+      propertyPath: audioEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 94d07e72b5fe7454aa645494988a09eb, type: 2}
     - target: {fileID: 6647574934684074773, guid: 166750eaaea2ff74294813ce22c0a66e, type: 3}
       propertyPath: m_Name
       value: Player

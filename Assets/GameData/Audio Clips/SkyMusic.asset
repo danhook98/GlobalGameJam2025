@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 99fd8bba0b58457288a7cecb012fc584, type: 3}
   m_Name: SkyMusic
   m_EditorClassIdentifier: Assembly-CSharp::AudioClipSO
   clip: {fileID: 8300000, guid: bcb16f2d9198f064e8507cf52133fea8, type: 3}

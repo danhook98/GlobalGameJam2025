@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: BubblePop
-  m_EditorClassIdentifier: Assembly-CSharp::AudioClipSO
-  clip: {fileID: 8300000, guid: 25d43ca05fb83f04f81ae82229df6dcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 99fd8bba0b58457288a7cecb012fc584, type: 3}
+  m_Name: Buff
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4519dc52481a0604da8e1e56624f6e73, type: 3}
