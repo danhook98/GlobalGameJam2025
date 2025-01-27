@@ -99,6 +99,8 @@ public class GameController : MonoBehaviour
 
         if (_buffActive || _debuffActive) return;
         
+        _buffActive = true;
+        
         audioEventChannel.PlayAudio(buffAudioClip);
 
         switch (buffType)
@@ -129,6 +131,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Debuff Collected: " + debuffType);
         
         if (_buffActive || _debuffActive) return;
+        
+        _debuffActive = true;
         
         audioEventChannel.PlayAudio(debuffAudioClip);
 
